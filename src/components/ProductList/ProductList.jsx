@@ -1,4 +1,8 @@
-import ProductCard from "components/ProductCard";
+// import ProductCard from "components/ProductCard";
+// import ProductCard from 'components/ProductCard/ProductCardInLine';
+// import ProductCard from 'components/ProductCard/ProductCardModule';
+
+import ProductCard from 'components/ProductCard/ProductCardTailwild';
 import PropTypes from 'prop-types';
 
 export default function ProductList({data}) {
@@ -9,7 +13,7 @@ export default function ProductList({data}) {
             <ProductCard
               key={id}
               id={id}
-              image={thumbnail}
+              thumbnail={thumbnail}
               title={title}
               price={price}
               brand={brand}
