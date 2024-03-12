@@ -1,9 +1,11 @@
 // import Counter from 'components/Counter';
 // import ColorPicker from 'components/ColorPicker';
 // import Dropdown from 'components/Dropdown';
-import TodoList from 'components/TodoList';
+// import TodoList from 'components/TodoList';
 import React, { Component } from 'react';
 import initialTodos from '../../todos.json';
+import Container from 'components/Container';
+import Form from 'components/Form';
 
 // const colorPickerOption = [
 //   { label: 'red', color: '#F44336' },
@@ -18,6 +20,7 @@ import initialTodos from '../../todos.json';
 class App extends Component {
   state = {
     todos: initialTodos,
+ 
   };
 
   deleteTodo = (todoId) => {
@@ -26,31 +29,54 @@ class App extends Component {
     }));
   };
 
+  formSubmitHandler = data => {
+    console.log(data)
+  }
 
+
+  // handleNameChange = event => {
+  //   this.setState({ name: event.currentTarget.value });
+  // }
+  
+  // handleTagChange = event => {
+  //   this.setState({ tag: event.currentTarget.value });
+  // }
 
   render() {
-    const { todos } = this.state;
+    // const { todos } = this.state;
     
-    const coplitedTodosCount = todos.reduce((acc, todo) => (todo.complited ? acc+1: acc), 0);
+    // const coplitedTodosCount = todos.reduce((acc, todo) => (todo.complited ? acc+1: acc), 0);
     return (
-      <>
-        <h1>Состояние компонента</h1>
-        {/* <Counter /> */}
-        {/* <Dropdown/> */}
-        {/* <ColorPicker options={colorPickerOption} /> */}
-        <div>
-          <p>
-            Общее кол-во Todo: {todos.length};
-          </p>
-          <p>
-            Кол-во выполненых: {coplitedTodosCount};
-          </p>
-        </div>
-        <TodoList
-          todos={todos}
-          onDeleteTodo={this.deleteTodo}
-        />
-      </>
+      <Container>
+        <Form onSubmit={ this.formSubmitHandler} />
+        {/* <form onSubmit={this.handleSbmit}>
+          <label htmlFor="">
+            Имя <input type="text" name='name' value={ this.state.name} onChange={this.handleChange}/>
+          </label>
+          <label>
+            Прозвище <input type='text' name='tag' value={this.state.tag}  onChange={this.handleChange}/>
+          </label>
+          <button type="submit">Отправить</button>
+        </form> */}
+      </Container>
+      // <>
+      //   <h1>Состояние компонента</h1>
+      //   <Counter />
+      //   <Dropdown/>
+      //    <ColorPicker options={colorPickerOption} />
+      //    <div>
+      //      <p>
+      //        Общее кол-во Todo: {todos.length};
+      //      </p>
+      //      <p>
+      //        Кол-во выполненых: {coplitedTodosCount};
+      //      </p>
+      //    </div>
+      //    <TodoList
+      //      todos={todos}
+      //      onDeleteTodo={this.deleteTodo}
+      //    />
+      //  </>
     );
   }
 }
