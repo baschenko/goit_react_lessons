@@ -1,0 +1,22 @@
+[
+  {
+    "id": "id-1",
+    "text": "Выучить",
+    "complited": true
+  },
+  {
+    "id": "id-2",
+    "text": "Разобраться",
+    "complited": false
+  },
+  {
+    "id": "id-3",
+    "text": "Пережить",
+    "complited": false
+  },
+  {
+    "id": "id-4",
+    "text": "Выжить",
+    "complited": false
+  }
+]
