@@ -1,6 +1,6 @@
-// import Counter from 'components/Counter/Counter';
+// import Counter from 'components/Counter';
 import ColorPicker from 'components/ColorPicker';
-// import Dropdown from 'components/Dropdown/Dropdown';
+// import Dropdown from 'components/Dropdown';
 import React from 'react';
 
 const colorPickerOption = [
