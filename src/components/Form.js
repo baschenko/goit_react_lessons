@@ -95,7 +95,7 @@ class Form extends Component {
                 <input type="checkbox" name="licence" checked={ this.state.licence} onChange={this.handleLicenceChange} />Согласен с условием
         </label>
 
-        <button type="submit">Отправить</button>
+        <button type="submit" disabled={!this.state.licence}>Отправить</button>
       </form>
     );
   }

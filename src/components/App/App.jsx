@@ -1,5 +1,5 @@
+import ColorPicker from 'components/ColorPicker';
 // import Counter from 'components/Counter';
-// import ColorPicker from 'components/ColorPicker';
 // import Dropdown from 'components/Dropdown';
 // import TodoList from 'components/TodoList';
 import React, { Component } from 'react';
@@ -7,15 +7,15 @@ import initialTodos from '../../todos.json';
 import Container from 'components/Container';
 import Form from 'components/Form';
 
-// const colorPickerOption = [
-//   { label: 'red', color: '#F44336' },
-//   { label: 'green', color: '#4CAF50' },
-//   { label: 'blue', color: '#2196F3' },
-//   { label: 'grey', color: '#607D86' },
-//   { label: 'pink', color: '#E91E63' },
-//   { label: 'indigo', color: '#3F51B5' },
+const colorPickerOption = [
+  { label: 'red', color: '#F44336' },
+  { label: 'green', color: '#4CAF50' },
+  { label: 'blue', color: '#2196F3' },
+  { label: 'grey', color: '#607D86' },
+  { label: 'pink', color: '#E91E63' },
+  { label: 'indigo', color: '#3F51B5' },
 
-// ];
+];
 
 class App extends Component {
   state = {
@@ -51,19 +51,19 @@ class App extends Component {
         <Form onSubmit={ this.formSubmitHandler} />
         {/* <form onSubmit={this.handleSbmit}>
           <label htmlFor="">
-            Имя <input type="text" name='name' value={ this.state.name} onChange={this.handleChange}/>
+          Имя <input type="text" name='name' value={ this.state.name} onChange={this.handleChange}/>
           </label>
           <label>
-            Прозвище <input type='text' name='tag' value={this.state.tag}  onChange={this.handleChange}/>
+          Прозвище <input type='text' name='tag' value={this.state.tag}  onChange={this.handleChange}/>
           </label>
           <button type="submit">Отправить</button>
         </form> */}
-      </Container>
+      <ColorPicker options={colorPickerOption} />
+        </Container>
       // <>
       //   <h1>Состояние компонента</h1>
       //   <Counter />
       //   <Dropdown/>
-      //    <ColorPicker options={colorPickerOption} />
       //    <div>
       //      <p>
       //        Общее кол-во Todo: {todos.length};
