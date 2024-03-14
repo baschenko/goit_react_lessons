@@ -2,21 +2,21 @@
   {
     "id": "id-1",
     "text": "Выучить",
-    "complited": true
+    "completed": true
   },
   {
     "id": "id-2",
     "text": "Разобраться",
-    "complited": false
+    "completed": false
   },
   {
     "id": "id-3",
     "text": "Пережить",
-    "complited": false
+    "completed": false
   },
   {
     "id": "id-4",
     "text": "Выжить",
-    "complited": false
+    "completed": false
   }
 ]
