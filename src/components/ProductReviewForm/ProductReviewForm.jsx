@@ -29,7 +29,7 @@ const validationSchema = Yup.object({
   wouldRecommend: Yup.boolean().default(false),
 });
 
-l initialValues = {
+ initialValues = {
   name: '',
   email: '',
   title: '',
