@@ -8,6 +8,7 @@ import Container from 'components/Container';
 import TodoEditor from 'components/TodoEditor';
 import shortid from 'shortid';
 import Filter from 'components/Filter';
+import Modal from 'components/Modal';
 // import Form from 'components/Form';
 
 // const colorPickerOption = [
@@ -24,7 +25,32 @@ class App extends Component {
   state = {
     todos: initialTodos,
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    console.log('App componentDidMount');
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App componentDidUpdate');
+
+    if (this.state.todos !== prevState.todos) {
+      console.log(
+        'todos is update! Записываю todos в хранилище',
+      );
+      localStorage.setItem(
+        'todos',
+        JSON.stringify(this.state.todos),
+      );
+    }
+  }
 
   addTodo = text => {
     console.log(text);
@@ -34,8 +60,8 @@ class App extends Component {
       text,
       completed: false,
     };
-    this.setState(({ todos }) =>({
-      todos: [todo, ...todos]
+    this.setState(({ todos }) => ({
+      todos: [todo, ...todos],
     }));
   };
 
@@ -75,31 +101,27 @@ class App extends Component {
     console.log(data);
   };
 
-  changeFilte = e => { 
-    this.setState({filter: e.currentTarget.value});
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
-
   getVisibleTodos = () => {
-   const { filter, todos } = this.state;
-   
-    const normalizedFilter =  filter.toLowerCase();
-    
+    const { filter, todos } = this.state;
+
+    const normalizedFilter = filter.toLowerCase();
+
     return todos.filter(todo =>
       todo.text.toLowerCase().includes(normalizedFilter),
     );
   };
 
-
   calculateCompletedTodos = () => {
     const { todos } = this.state;
-    return (
-      todos.reduce(
+    return todos.reduce(
       (acc, todo) => (todo.completed ? acc + 1 : acc),
       0,
-    )
     );
-  }
+  };
 
   // handleNameChange = event => {
   //   this.setState({ name: event.currentTarget.value });
@@ -109,16 +131,44 @@ class App extends Component {
   //   this.setState({ tag: event.currentTarget.value });
   // }
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal:!showModal,
+    }));
+  };
+
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
-    const coplitedTodosCount = this.calculateCompletedTodos();
+    const coplitedTodosCount =
+      this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
-
-
 
     return (
       <Container>
+        <button type="button" onClick={this.toggleModal}>
+          Открыть модалку
+        </button>
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <h1>Привет это пример модалки как Чилдрен</h1>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Dolore, corrupti excepturi
+              sapiente odit dolorum obcaecati dolores saepe
+              error, commodi quas itaque voluptate ducimus,
+              iusto incidunt voluptatem cumque aut
+              reprehenderit inventore.
+            </p>
+            <button
+              type="button"
+              onClick={this.toggleModal}
+            >
+              Close
+            </button>
+          </Modal>
+        )}
+
         {/* <Form onSubmit={ this.formSubmitHandler} /> */}
         {/* <form onSubmit={this.handleSbmit}>
           <label htmlFor="">
@@ -130,6 +180,7 @@ class App extends Component {
           <button type="submit">Отправить</button>
         </form> */}
         {/* <ColorPicker options={colorPickerOption} /> */}
+        {/* 
         <div>
           <p>Общее кол-во Todo: {totalTodoCount};</p>
           <p>Кол-во выполненых: {coplitedTodosCount};</p>
@@ -137,14 +188,15 @@ class App extends Component {
         <TodoEditor onSubmit={this.addTodo} />
         <Filter
           value={filter}
-          onChange={this.changeFilte}
+          onChange={this.changeFilter}
         />
         <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
       </Container>
+
       // <>
       //   <h1>Состояние компонента</h1>
       //   <Counter />
