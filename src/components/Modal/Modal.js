@@ -6,13 +6,11 @@ const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
   componentDidMount() {
-    console.log('Modal componentDidMount');
 
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    console.log('Modal componentWillUnmount');
     window.removeEventListener(
       'keydown',
       this.handleKeyDown,
@@ -20,10 +18,8 @@ export default class Modal extends Component {
   }
 
   handleKeyDown = e => {
-    console.log(e.code);
 
     if (e.code === 'Escape') {
-      console.log('Нажали Эскейп - закрыть модалку');
       this.props.onClose();
     }
   };
