@@ -49,6 +49,8 @@ class App extends Component {
     const nextTodos = this.state.todos;
     const prevTodos = prevState.todos;
 
+
+    
     if (nextTodos !== prevTodos) {
       console.log(
         'todos is update! Записываю todos в хранилище',
@@ -64,6 +66,8 @@ class App extends Component {
     }
   }
 
+
+
   addTodo = text => {
     console.log(text);
 
@@ -78,6 +82,8 @@ class App extends Component {
 
     // this.toggleModal();
   };
+
+
 
   deleteTodo = todoId => {
     this.setState(prevState => ({
